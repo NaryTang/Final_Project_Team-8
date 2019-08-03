@@ -204,6 +204,15 @@ a {
     background: rgb(110, 212, 110) !important;
 }
 
+#StevenTheModel {
+    padding: 10px;
+    background: red;
+    color: white;
+    border: black solid 3px;
+    font-weight: bold;
+    
+}
+
 @media(max-width: 450px) {
     .comment {
         width: 100%;

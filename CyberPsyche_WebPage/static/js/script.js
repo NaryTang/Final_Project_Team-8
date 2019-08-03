@@ -2,11 +2,15 @@ var body = d3.select('body');
 var table = d3.select('table');
 var thead = d3.select('thead');
 var tbody = d3.select('tbody');
+const fetch = window.fetch.bind(window);
+
 
 // Read from csv file
-d3.csv("Resources", "Test_Twitter_Comments.csv", function(data) {
-    
-    console.log(data)
+// d3.csv("{{url_for('Resources', filename='Test_Twitter_Comments.csv')}}").then(function(data){
+// d3.csv("Resources", "Test_Twitter_Comments.csv",function(error,data) {
+d3.csv("/static/Resources/Test_Twitter_Comments.csv", function(data, error) {
+   
+    console.log(error)
 
     let row = tbody.append("tr");
 
@@ -15,7 +19,7 @@ d3.csv("Resources", "Test_Twitter_Comments.csv", function(data) {
         let cell = row.append("td");
         cell.text(value);
 
-    })
+    });
 
     // tbody.selectAll("tr").each(function() {
     //     //console.log(this.querySelector("td:nth-child(3)").innerHTML)
@@ -31,7 +35,7 @@ d3.csv("Resources", "Test_Twitter_Comments.csv", function(data) {
 
     $(function(){
         $("tbody > tr").each(function(){
-          var col_val = $(this).find("td:eq(2)").text();
+          var col_val = $(this).find("td:eq(1)").text();
           if (col_val == 1){
             $(this).addClass('bully');  //the selected class colors the row red//
           } else {
@@ -41,28 +45,28 @@ d3.csv("Resources", "Test_Twitter_Comments.csv", function(data) {
       });
 
     
-})
-
-var myform = $('#myTable');
-var model = 0;
-
-$('#runModel').click(function() {
-    $("thead > tr").append('<th>Model Score</th>');
-    myform.find('tr').each(function() {
-        var trow = $(this);
-        trow.append('<td>'+ model +'</td>');
-    })
-
-    $(function(){
-        $("tbody > tr").each(function(){
-          var col_val = $(this).find("td:eq(3)").text();
-          if (col_val == 1){
-            $(this).removeClass().addClass('bully');  //the selected class colors the row red//
-          } else {
-            $(this).removeClass().addClass('positive');
-          }
-        });
-      });
 });
+
+// var myform = $('#myTable');
+// var model = 0;
+
+// $('#runModel').click(function() {
+//     $("thead > tr").append('<th>Model Score</th>');
+//     myform.find('tr').each(function() {
+//         var trow = $(this);
+//         trow.append('<td>'+ model +'</td>');
+//     })
+
+//     $(function(){
+//         $("tbody > tr").each(function(){
+//           var col_val = $(this).find("td:eq(3)").text();
+//           if (col_val == 1){
+//             $(this).removeClass().addClass('bully');  //the selected class colors the row red//
+//           } else {
+//             $(this).removeClass().addClass('positive');
+//           }
+//         });
+//       });
+// });
 
 
