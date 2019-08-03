@@ -1,12 +1,12 @@
-
-var body = d3.select("body");
+var body = d3.select('body');
 var table = d3.select('table');
 var thead = d3.select('thead');
 var tbody = d3.select('tbody');
 
 // Read from csv file
 d3.csv("Resources", "Test_Twitter_Comments.csv", function(data) {
-    //console.log(data)
+    
+    console.log(data)
 
     let row = tbody.append("tr");
 
